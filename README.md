@@ -23,6 +23,14 @@ tokens, so layout, controls and behaviour stay the host's.
 
 ---
 
+<p align="center">
+  <img src="./docs/ambience.gif" alt="Ambience layer: embers rising and wisteria petals falling over washi paper (light) and ink (dark)" width="100%" />
+</p>
+
+*The ambience layer, rendered from this plugin's own stylesheet in a browser —
+light · washi on the left, dark · ink on the right. The particles are CSS-only;
+no script animates them, and the same keyframes run in the app.*
+
 <img src="./docs/palette.svg" alt="Palette: washi paper in light mode, ink and ember in dark mode" width="100%" />
 
 ## Why
@@ -140,6 +148,8 @@ is targeted, and no data is stored or fetched.
 ├── locale/zh.json      Chinese metadata
 ├── icon.svg            Plugin list artwork
 ├── docs/palette.svg    Palette card used by this README
+├── docs/ambience.gif   Animated ambience preview
+├── docs/preview.html   The stage that renders the preview from the plugin CSS
 ├── test/run-tests.mjs  Offline checks
 └── .github/workflows   CI
 ```

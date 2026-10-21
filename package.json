@@ -1,6 +1,6 @@
 {
   "name": "dsh-taisho-ink",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Taisho-era ink-and-crimson theme for the DeepSeek Harness Web UI: crimson alias tokens, drifting embers, wisteria petals and a nichirin-sun crest. DSH 插件：大正墨染界面主题。",
   "type": "module",
   "main": "lib/index.js",

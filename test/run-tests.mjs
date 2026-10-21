@@ -114,6 +114,22 @@ check('the palette card is an SVG', () => {
   assert.match(read('docs/palette.svg'), /^<svg[\s>]/)
 })
 
+section('documentation assets')
+
+check('the animated preview ships as a valid GIF', () => {
+  const gif = readFileSync(join(root, 'docs', 'ambience.gif'))
+  assert.equal(gif.subarray(0, 6).toString('ascii'), 'GIF89a')
+  assert.ok(gif.length > 100 * 1024, 'the preview looks empty')
+  assert.ok(gif.length < 5 * 1024 * 1024, 'the preview is too large for a README')
+})
+
+check('the preview stage reuses the plugin particle rules', () => {
+  const html = read('docs/preview.html')
+  assert.match(html, /ti-ember/)
+  assert.match(html, /ti-petal/)
+  assert.ok(!html.includes('data:image'))
+})
+
 // ---------------------------------------------------------------------------
 // 4. Host half
 // ---------------------------------------------------------------------------
@@ -192,7 +208,7 @@ const PERSONAL = [
 check('no local paths or credentials in tracked text files', () => {
   const offenders = []
   for (const file of walk(root, [])) {
-    if (!/\.(md|json|js|mjs|yml|yaml|svg|txt)$/i.test(file)) continue
+    if (!/\.(md|json|js|mjs|yml|yaml|svg|txt|html)$/i.test(file)) continue
     const text = readFileSync(file, 'utf8')
     for (const rule of PERSONAL) {
       if (rule.re.test(text)) offenders.push(`${relative(root, file)} → ${rule.label}`)

@@ -4,6 +4,19 @@ All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] — 2026-10-21
+
+Documentation only.
+
+### Added
+
+- Animated ambience preview (`docs/ambience.gif`): embers rising and wisteria
+  petals falling over both palettes, rendered from the plugin's own stylesheet
+  by `docs/preview.html`.
+- A check that the preview GIF ships in the repository and is a valid GIF.
+
+[1.0.1]: https://github.com/xbbkok/dsh-taisho-ink/releases/tag/v1.0.1
+
 ## [1.0.0] — 2026-10-21
 
 First public release.

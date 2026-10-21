@@ -21,6 +21,13 @@
 
 ---
 
+<p align="center">
+  <img src="./docs/ambience.gif" alt="氛围层：余烬上升、紫藤花瓣飘落，左侧和纸亮色、右侧墨色暗调" width="100%" />
+</p>
+
+*氛围层：用本插件自己的样式表在浏览器里渲染，左边是亮色·和纸，右边是暗色·墨。
+粒子全部由 CSS 驱动，没有脚本参与动画，和应用里跑的是同一套关键帧。*
+
 <img src="./docs/palette.svg" alt="配色：亮色为和纸，暗色为墨与余烬" width="100%" />
 
 ## 为什么做它
@@ -130,6 +137,8 @@ profile patch 位置：
 ├── locale/zh.json      中文元数据
 ├── icon.svg            插件列表图标
 ├── docs/palette.svg    README 使用的配色卡
+├── docs/ambience.gif   动态氛围预览
+├── docs/preview.html   用插件 CSS 渲染该预览的舞台页
 ├── test/run-tests.mjs  离线检查
 └── .github/workflows   CI
 ```
