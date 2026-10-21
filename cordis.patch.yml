@@ -1,0 +1,23 @@
+# dsh-taisho-ink — bundle patch
+#
+# This file is the `dsh.bundle.patch` layer of the published package. Installing
+# through the official CLI:
+#
+#   dsh plugin --profile <name> add dsh-taisho-ink
+#
+# makes `dsh` append `dsh-taisho-ink` to the profile's `dsh.profile.bundles` and
+# merge THIS patch: one `insert` of the plugin row. No profile file edits needed.
+#
+# Manual mount (development, or a checkout): point the same row id at the package
+# entry instead. The profile patch layer is applied after the bundle layers and
+# wins per row id, so it overrides this insert rather than adding a second one:
+#
+#   - insert:
+#       - id: dsh-taisho-ink
+#         name: 'file:///C:/path/to/dsh-taisho-ink/lib/index.js'
+#
+# Do not mount the package twice under two different ids: a second copy would
+# register a second theme token layer over the same alias variables.
+- insert:
+    - id: dsh-taisho-ink
+      name: 'dsh-taisho-ink'

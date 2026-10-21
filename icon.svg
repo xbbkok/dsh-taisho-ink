@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Taisho ink theme">
+  <defs>
+    <linearGradient id="sun" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#d8322e"/>
+      <stop offset="1" stop-color="#8f1116"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0c0e13"/>
+  <circle cx="32" cy="32" r="26" fill="none" stroke="#d8a24a" stroke-opacity="0.4" stroke-width="1.2" stroke-dasharray="2 5"/>
+  <circle cx="32" cy="32" r="20" fill="url(#sun)"/>
+  <path d="M14 50L50 14" stroke="#e9e4d8" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M14 50L50 14" stroke="#a9a294" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 4"/>
+  <circle cx="16" cy="48" r="2.6" fill="#d8a24a"/>
+  <circle cx="32" cy="32" r="20" fill="none" stroke="#d8a24a" stroke-opacity="0.55" stroke-width="1"/>
+</svg>

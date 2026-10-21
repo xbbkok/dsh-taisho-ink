@@ -1,0 +1,68 @@
+{
+  "name": "dsh-taisho-ink",
+  "version": "1.0.0",
+  "description": "A Taisho-era ink-and-crimson theme for the DeepSeek Harness Web UI: crimson alias tokens, drifting embers, wisteria petals and a nichirin-sun crest. DSH 插件：大正墨染界面主题。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": ["@deepseek-ai/dsh-client-ui-conversation"]
+    }
+  },
+  "files": [
+    "lib",
+    "locale",
+    "icon.svg",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node test/run-tests.mjs"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "deepseek",
+    "cordis",
+    "theme",
+    "web-ui",
+    "taisho",
+    "anime",
+    "dark-theme"
+  ],
+  "license": "MIT",
+  "author": "xbbkok",
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xbbkok/dsh-taisho-ink.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xbbkok/dsh-taisho-ink/issues"
+  },
+  "homepage": "https://github.com/xbbkok/dsh-taisho-ink#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh": ">=0.1.2-rc.1"
+  }
+}
