@@ -160,10 +160,30 @@ check('registers the package id and a factory', () => {
   assert.match(client, /factory\(require\)\s*\{/)
 })
 
-check('registers the token layer and both slot entries', () => {
+check('registers the token layer, the ambience and the crest', () => {
   assert.match(client, /ctx\.theme\.overrideTokens\(PACKAGE, TOKENS\)/)
   assert.match(client, /'shell\.overlay', id: 'dsh-taisho-ink\.atmosphere'/)
   assert.match(client, /'conversation\.hero\.brand\.mark'/)
+})
+
+check('registers the Brand settings tab', () => {
+  assert.match(client, /'settings\.plugins\.tab'/)
+  assert.match(client, /id: 'dsh-taisho-ink\.brand'/)
+  assert.match(client, /label: function \(\) \{ return t\('brand\.tab'\) \}/)
+})
+
+check('shadows the sidebar brand mark at a lower priority', () => {
+  assert.match(client, /'sidebar\.brand\.mark'/)
+  assert.match(client, /priority: -1/)
+  // Default mode must dispose the registration so the official mark returns.
+  assert.match(client, /if \(brandStore\.get\(\)\.mode === 'default'\) return/)
+})
+
+check('registers the Brand UI dictionaries for both locales', () => {
+  assert.match(client, /ctx\.locale\.register\(NS, 'en', EN\)/)
+  assert.match(client, /ctx\.locale\.register\(NS, 'zh', ZH\)/)
+  assert.match(client, /'brand\.tab': 'Brand'/)
+  assert.match(client, /dsh-taisho-ink:brand/)
 })
 
 check('ships no binary payload and performs no network access', () => {

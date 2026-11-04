@@ -4,6 +4,27 @@ All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] — 2026-11-04
+
+### Added
+
+- **Customizable brand mark.** A new **Brand** tab in Settings → Plugins lets you
+  replace the sidebar's top-left mark with the theme crest, your own image, or
+  nothing at all. Default keeps the official mark.
+  - The official mark registers at the default priority; the theme shadows it by
+    registering `sidebar.brand.mark` at priority `-1` (the single-slot rule:
+    one registration per priority, lowest renders).
+  - Switching back to Default disposes that registration, so the official mark
+    returns without a reload.
+  - Custom images are center-cropped to 128×128 and stored as a PNG data URL in
+    `localStorage` under `dsh-taisho-ink:brand` — never uploaded.
+- Brand UI dictionaries (`en`, `zh`) registered through the locale service; the
+  tab label follows the interface language.
+- Offline checks for the Brand tab, the shadow registration and the locale
+  dictionaries.
+
+[1.1.0]: https://github.com/xbbkok/dsh-taisho-ink/releases/tag/v1.1.0
+
 ## [1.0.1] — 2026-10-21
 
 Documentation only.
