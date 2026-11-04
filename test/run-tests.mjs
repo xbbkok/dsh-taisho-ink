@@ -160,40 +160,10 @@ check('registers the package id and a factory', () => {
   assert.match(client, /factory\(require\)\s*\{/)
 })
 
-check('registers the token layer, the ambience and the crest', () => {
+check('registers the token layer and both slot entries', () => {
   assert.match(client, /ctx\.theme\.overrideTokens\(PACKAGE, TOKENS\)/)
   assert.match(client, /'shell\.overlay', id: 'dsh-taisho-ink\.atmosphere'/)
   assert.match(client, /'conversation\.hero\.brand\.mark'/)
-})
-
-check('registers the Brand settings tab', () => {
-  assert.match(client, /'settings\.plugins\.tab'/)
-  assert.match(client, /id: 'dsh-taisho-ink\.brand'/)
-  assert.match(client, /label: function \(\) \{ return t\('brand\.tab'\) \}/)
-})
-
-check('shadows the sidebar brand mark and name at a lower priority', () => {
-  assert.match(client, /'sidebar\.brand\.mark'/)
-  assert.match(client, /'sidebar\.brand\.name'/)
-  assert.equal((client.match(/priority: -1/g) || []).length, 2)
-  // Default modes must dispose their registration so the official occupants return.
-  assert.match(client, /if \(state\.mode !== 'default'\)/)
-  assert.match(client, /if \(state\.nameMode !== 'default'\)/)
-})
-
-check('limits and normalizes the brand name', () => {
-  assert.match(client, /const NAME_LIMIT = 40/)
-  assert.match(client, /function normalizeName\(value\)/)
-  assert.match(client, /value\.slice\(0, NAME_LIMIT\)/)
-})
-
-check('registers the Brand UI dictionaries for both locales', () => {
-  assert.match(client, /ctx\.locale\.register\(NS, 'en', EN\)/)
-  assert.match(client, /ctx\.locale\.register\(NS, 'zh', ZH\)/)
-  assert.match(client, /'brand\.tab': 'Brand'/)
-  assert.match(client, /'name\.title': 'Brand name'/)
-  assert.match(client, /'name\.title': '品牌名称'/)
-  assert.match(client, /dsh-taisho-ink:brand/)
 })
 
 check('ships no binary payload and performs no network access', () => {
