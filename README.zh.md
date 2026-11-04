@@ -45,7 +45,7 @@ shell 升级时失效。这个包两件事都不做：它通过主题服务覆�
 | 🔥 **余烬** | 18 颗粒子从底边升起，边漂移边淡出 |
 | 🌸 **紫藤** | 10 片花瓣旋转飘落，低透明度紫色 |
 | 🗡️ **纹章** | 空会话页标题前：朱红日轮 + 日轮刀 + 金环 |
-| 🧿 **品牌图标** | 侧栏左上角可换成官方标识、主题纹章、你自己的图片，或直接隐藏 |
+| 🧿 **品牌图标** | 侧栏左上角的图标和它旁边那行字都可换：官方标识、主题纹章、你的图片，以及自定义名称 |
 | ✨ **细节** | 朱红文字选中色、圆角品牌色滚动条 |
 | ♿ **减少动态** | 系统开启 reduced motion 时，粒子与动画停止 |
 | 🌐 **本地化** | 中英文界面文案，插件行与「品牌图标」标签跟随 DSH 语言 |
@@ -128,6 +128,14 @@ profile patch 位置：
 注册一个，优先级最低者渲染」。官方标识在优先级 `0`，所以主题用优先级 `-1` 注册来
 压过它；切回**默认**时会释放这条注册，官方图标立刻恢复，不需要刷新。
 
+图标旁边那行文字走同一套规则，槽位是 `sidebar.brand.name`：
+
+| 模式 | 效果 |
+|---|---|
+| **默认** | 官方字样 |
+| **自定义文字** | 最多 40 个字符，自己填 |
+| **隐藏** | 不绘制 |
+
 ## 实现
 
 浏览器半边在 `apply` 里注册这些内容：
@@ -137,8 +145,9 @@ profile patch 位置：
 | `ctx.theme.overrideTokens('dsh-taisho-ink', TOKENS)` | 14 个 alias token 的 `{ light, dark }` 组合，叠加在当前主题之上，卸载即移除 |
 | `shell.overlay` 条目 `dsh-taisho-ink.atmosphere` | 点击穿透的光晕、和纸纹理、余烬与花瓣；样式表随组件挂载，组件卸载后消失 |
 | `conversation.hero.brand.mark` | 空会话页标题前的纹章 |
-| `settings.plugins.tab` 条目 `dsh-taisho-ink.brand` | 选择侧栏图标的「品牌图标」标签页 |
-| `sidebar.brand.mark`（优先级 `-1`） | 仅在选择非「默认」模式时注册，切回默认即释放 |
+| `settings.plugins.tab` 条目 `dsh-taisho-ink.brand` | 选择侧栏图标与文字的「品牌图标」标签页 |
+| `sidebar.brand.mark`（优先级 `-1`） | 仅在选择非「默认」图标模式时注册，切回默认即释放 |
+| `sidebar.brand.name`（优先级 `-1`） | 仅在选择非「默认」文字模式时注册，切回默认即释放 |
 
 不写插件组件之外的 DOM，不针对宿主的类名做选择器。唯一持久化的值是
 `localStorage` 里的品牌偏好，不请求任何数据。
@@ -147,7 +156,8 @@ profile patch 位置：
 
 - DeepSeek Harness 0.2.x，Web 客户端（桌面端与浏览器）。
 - 使用槽位：`shell.overlay`、`conversation.hero.brand.mark`、
-  `settings.plugins.tab`、`sidebar.brand.mark`（优先级 `-1`，可选）。
+  `settings.plugins.tab`、`sidebar.brand.mark` 与 `sidebar.brand.name`
+  （优先级 `-1`，可选）。
 - 不注册任何 Host 服务、路由、工具或设置项。
 
 ## 开发

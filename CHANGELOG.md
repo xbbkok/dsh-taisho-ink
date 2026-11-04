@@ -4,6 +4,22 @@ All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] — 2026-11-04
+
+### Added
+
+- **Customizable brand name.** The Brand tab now also controls the text beside
+  the sidebar mark (`sidebar.brand.name`): the official wordmark, your own text
+  (up to 40 characters), or nothing at all.
+  - The same single-slot rule as the mark: registered at priority `-1` while a
+    custom name mode is active, disposed when **Default** is selected.
+  - The name shares the `dsh-taisho-ink:brand` record; 1.1.0 values are read with
+    defaults, so upgrading keeps the chosen mark.
+- Name copy in both locales, a length limit, and offline checks for the name
+  shadow and normalization.
+
+[1.2.0]: https://github.com/xbbkok/dsh-taisho-ink/releases/tag/v1.2.0
+
 ## [1.1.0] — 2026-11-04
 
 ### Added

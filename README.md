@@ -50,7 +50,7 @@ existing UI — so the shell keeps owning its own layout.
 | 🔥 **Embers** | 18 particles rising from the bottom edge, swaying as they fade |
 | 🌸 **Wisteria** | 10 petals falling and swinging, in low-opacity violet |
 | 🗡️ **Crest** | A crimson sun, a nichirin blade and a gold ring before the blank-session headline |
-| 🧿 **Brand mark** | Replace the sidebar's top-left mark: official logo, theme crest, your own image, or nothing |
+| 🧿 **Brand mark** | Replace the sidebar's top-left mark and the text beside it: official, theme crest or your own image, plus a custom name |
 | ✨ **Details** | Crimson text selection and a rounded, brand-tinted scrollbar |
 | ♿ **Reduced motion** | Particles and animations stop under `prefers-reduced-motion: reduce` |
 | 🌐 **Localized** | English and Chinese UI copy; the plugin row and the Brand tab follow the DSH language |
@@ -141,6 +141,14 @@ sits at priority `0`, so the theme registers at priority `-1` to shadow it — a
 switching back to **Default** disposes that registration, which makes the
 official mark active again without a reload.
 
+The text beside the mark follows the same rules, on `sidebar.brand.name`:
+
+| Mode | Result |
+|---|---|
+| **Default** | The official wordmark |
+| **Custom text** | Up to 40 characters of your own |
+| **Hidden** | Nothing is drawn |
+
 ## How it works
 
 The browser half registers everything inside `apply`:
@@ -150,8 +158,9 @@ The browser half registers everything inside `apply`:
 | `ctx.theme.overrideTokens('dsh-taisho-ink', TOKENS)` | The 14 alias tokens as `{ light, dark }` pairs; stacked above the active theme and removed on unload |
 | `shell.overlay` entry `dsh-taisho-ink.atmosphere` | The click-through glow, washi texture, embers and petals; the stylesheet lives in this component and disappears with it |
 | `conversation.hero.brand.mark` | The crest shown before the blank-session headline |
-| `settings.plugins.tab` entry `dsh-taisho-ink.brand` | The **Brand** tab that picks the sidebar mark |
-| `sidebar.brand.mark` at priority `-1` | Registered only while a non-default brand mode is active, disposed otherwise |
+| `settings.plugins.tab` entry `dsh-taisho-ink.brand` | The **Brand** tab that picks the sidebar mark and name |
+| `sidebar.brand.mark` at priority `-1` | Registered only while a non-default mark mode is active, disposed otherwise |
+| `sidebar.brand.name` at priority `-1` | Registered only while a non-default name mode is active, disposed otherwise |
 
 No DOM outside the plugin's own components is written and no class name of the
 host is targeted. The only persisted value is the brand preference in
@@ -161,7 +170,8 @@ host is targeted. The only persisted value is the brand preference in
 
 - DeepSeek Harness 0.2.x, web client (desktop and browser).
 - Slots used: `shell.overlay`, `conversation.hero.brand.mark`,
-  `settings.plugins.tab`, `sidebar.brand.mark` (priority `-1`, optional).
+  `settings.plugins.tab`, `sidebar.brand.mark` and `sidebar.brand.name`
+  (priority `-1`, optional).
 - No Host service, route, tool or setting is registered.
 
 ## Development
